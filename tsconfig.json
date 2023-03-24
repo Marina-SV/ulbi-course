@@ -1,11 +1,26 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
-    "jsx": "react",
-    "allowJs": true,
-    "moduleResolution": "node"
+    "outDir": "./dist/", // куда происходит сборка, но мы собираем webpack
+    "noImplicitAny": true, // подсвечивает места где не указан тип
+    "module": "ES6", // вариант модульной сборки
+    "target": "es5", // в какой стандарт компилировать наш код
+    "jsx": "react", // чтобы писать конструкции jsx в реакт
+    "allowJs": true, // позволяет компилятору обрабатывать не только ts, но и js
+    "moduleResolution": "node", // определяет тип импортов node или classic
+    // esModuleInterop позволяет работать с пакетами common.js c помощью import,
+    // т.е. не использовать require()
+    "esModuleInterop": true,
+    // Библиотеки написанные на node.js часто не имеют
+    // дефолтного импорта (import webpack from 'webpack')
+    // лоадеры типа ts-loader могут автоматически создавать их
+    // пишем import webpack from 'webpack'
+    // вместо import * as webpack from 'webpack'
+    "allowSyntheticDefaultImports": true,
+  },
+  // если НЕ module: commonJS, то нужны настройки ts-node
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }
