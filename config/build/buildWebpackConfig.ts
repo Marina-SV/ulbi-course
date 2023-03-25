@@ -3,6 +3,7 @@ import {BuildOptions} from "./types/config";
 import {buildPlugins} from "./buildPlugins";
 import {buildLoaders} from "./buildLoaders";
 import {buildResolves} from "./buildResolves";
+import {buildDevServer} from "./buildDevServer";
 
 
 export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
@@ -26,5 +27,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             rules: buildLoaders(),
         },
         resolve: buildResolves(),
+        devtool: 'inline-source-map', // четко видеть в каком файле произошла ошибка при сборке
+        devServer: buildDevServer(options),
     }
 }
