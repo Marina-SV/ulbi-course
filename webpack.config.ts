@@ -10,7 +10,7 @@ export default (env: BuildEnv): webpack.Configuration => {
     const paths: BuildPath = {
         // использование path для разных операционных систем
         // Преобразует последовательность путей или сегментов пути в абсолютный путь.
-        entry: path.resolve(__dirname, 'src', 'index.ts'),
+        entry: path.resolve(__dirname, 'src', 'index.tsx'),
         build: path.resolve(__dirname, 'build'),
         html: path.resolve(__dirname, 'public', 'index.html'),
     }
