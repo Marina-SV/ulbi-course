@@ -1,10 +1,10 @@
 import React from 'react';
-import "./Counter.scss";
 
+import '../index.scss';
 
 export const Counter = () => {
     return (
-        <div>
+        <div className="app" >
             123456
         </div>
     );
