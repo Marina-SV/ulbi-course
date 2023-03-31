@@ -1,12 +1,17 @@
-import React, {Suspense} from 'react';
+import React, {Suspense, useContext} from 'react';
 import {Link, Route, Routes} from "react-router-dom";
 import {MainPageAsync} from "../pages/MainPage/MainPage.async";
 import {AboutPageAsync} from "../pages/AboutPage/AboutPage.async";
-
+import "./styles/index.scss";
+import {useTheme} from "./theme/useTheme";
 
 const App = () => {
+
+    const { theme, toggleTheme } = useTheme();
+
     return (
-        <div>
+        <div className={`app ${theme}`}>
+            <button onClick={toggleTheme}>Toggle</button>
             <Link to={"/"}>Main</Link>
             <Link to={"/about"}>About</Link>
             {/*Асинхронные компоненты нужно оборачивать в Suspense*/}
