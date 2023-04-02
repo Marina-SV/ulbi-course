@@ -1,4 +1,4 @@
-// для импорта CSS modules с Typescript + Reactqqi::
+// для импорта CSS modules с Typescript + React
 declare module '*.scss' {
     interface IClassNames {
         [className: string]: string

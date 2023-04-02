@@ -26,7 +26,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         module: {
             rules: buildLoaders(options),
         },
-        resolve: buildResolves(),
+        resolve: buildResolves(options),
         // настройка webpack-dev-server (скрипта start)
         devtool: isDev ? 'inline-source-map' : undefined, // четко видеть в каком файле произошла ошибка при сборке
         devServer: isDev ? buildDevServer(options): undefined,
