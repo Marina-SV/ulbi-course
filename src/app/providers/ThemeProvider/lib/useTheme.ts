@@ -4,8 +4,8 @@ import {LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext} from "app/providers/ThemeP
 
 
 interface UseThemeResult {
-    toggleTheme: () => void;
     theme: Theme;
+    toggleTheme: () => void;
 }
 
 export function useTheme(): UseThemeResult {
