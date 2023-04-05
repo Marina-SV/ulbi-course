@@ -1,7 +1,8 @@
 import React from 'react';
 import {classNames} from "shared/lib/classNames";
 import cls from "./Navbar.module.scss"
-import {AppLink, AppLinkTheme} from "shared/ui/AppLink";
+import {AppLink, AppLinkTheme} from "shared/ui/AppLink/AppLink";
+import {ThemeSwitcher} from "widgets/ThemeSwitcher";
 
 
 /*компоненты, которые не требуют асинхронного чанка будем экспортировать
@@ -16,6 +17,7 @@ interface NavbarProps {
 export const Navbar = ({className}: NavbarProps) => {
     return (
         <nav className={classNames(cls.Navbar, {}, [className])}>
+            <ThemeSwitcher />
             <div className={classNames(cls.links)}>
                 <AppLink theme={AppLinkTheme.SECONDARY} to={"/"} className={classNames(cls.mainLink)}>Main</AppLink>
                 <AppLink theme={AppLinkTheme.SECONDARY} to={"/about"}>About</AppLink>

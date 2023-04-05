@@ -13,7 +13,7 @@ const App = () => {
         <div className={classNames("app", {}, [theme])}>
             <Navbar/>
             <AppRouter/>
-            <button onClick={toggleTheme}>Toggle</button>
+
         </div>
     );
 };
