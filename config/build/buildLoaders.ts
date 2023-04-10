@@ -1,38 +1,36 @@
-import webpack from "webpack";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import {BuildOptions} from "./types/config";
+import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BuildOptions } from './types/config';
 
-
-export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     // порядок лоудеров имеет значение и лучше их выносить в переменные
-
 
     const svgLoader = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
-    }
+    };
 
     const babelLoader = {
         test: /\.(js|jsx|tsx)$/,
         exclude: /node_modules/,
         use: {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
                 presets: ['@babel/preset-env'],
                 plugins: [
                     [
-                        "i18next-extract",
+                        'i18next-extract',
                         {
                             locales: ['ru', 'en'],
                             keyAsDefaultValue: false,
                             saveMissing: true,
                             outputPath: 'public/locales/{{locale}}/{{ns}}.json',
-                        }
+                        },
                     ],
-                ]
-            }
-        }
-    }
+                ],
+            },
+        },
+    };
 
     const cssLoader = {
         test: /\.s[ac]ss$/i,
@@ -42,27 +40,27 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
             // настройка css modules для webpack
             // лоудер можно указать строкой или объектом
             {
-                loader: "css-loader",
+                loader: 'css-loader',
                 options: {
                     modules: {
                         // генерация уникальных названий классов только для модулей
                         auto: (resPath: string) => Boolean(resPath.includes('.module.')),
                         localIdentName: isDev
                             ? '[path][name]__[local]' // читабельные названия классов
-                            : '[hash:base64:8]'
+                            : '[hash:base64:8]',
                     },
-                }
+                },
             },
 
-            "sass-loader",
+            'sass-loader',
         ],
-    }
+    };
 
     const typescriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
-    }
+    };
 
     // в регулярку можно добавить и расширения шрифтов
     const fileLoader = {
@@ -72,7 +70,7 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
                 loader: 'file-loader',
             },
         ],
-    }
+    };
 
     return [
         fileLoader,
@@ -80,5 +78,5 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
         babelLoader,
         typescriptLoader,
         cssLoader,
-    ]
+    ];
 }

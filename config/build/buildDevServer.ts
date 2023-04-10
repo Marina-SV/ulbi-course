@@ -1,5 +1,5 @@
-import {BuildOptions} from "./types/config";
-import {Configuration as DevServerConfiguration} from "webpack-dev-server";
+import { Configuration as DevServerConfiguration } from 'webpack-dev-server';
+import { BuildOptions } from './types/config';
 
 export function buildDevServer(options: BuildOptions): DevServerConfiguration {
     return {
@@ -7,6 +7,6 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
         open: true, // автоматически в браузере открывает приложение
         // для react router страницы по пути не "/" при обновлении не падали
         historyApiFallback: true,
-        hot: true
-    }
+        hot: true,
+    };
 }
