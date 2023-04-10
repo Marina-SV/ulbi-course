@@ -5,8 +5,6 @@ import {classNames} from "shared/lib/classNames";
 import {AppRouter} from "app/providers/router/ui/AppRouter";
 import {Navbar} from "widgets/Navbar";
 import {Sidebar} from "widgets/Sidebar/ui/Sidebar/Sidebar";
-import {useTranslation} from "react-i18next";
-
 
 
 const App = () => {
