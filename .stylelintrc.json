@@ -5,7 +5,6 @@
   "plugins": ["stylelint-order"],
   "rules": {
     "indentation": [4],
-    "order/properties-alphabetical-order": true,
     "selector-class-pattern": null
   }
 }
