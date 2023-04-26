@@ -18,6 +18,7 @@ export const Button: FC<ButtonProps> = (props) => {
         theme,
         ...otherProps
     } = props;
+
     return (
         <button
             type="button"
