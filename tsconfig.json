@@ -37,6 +37,8 @@
   },
   // настройка для jest
   "include": [
-    "./config/jest/setupTest.ts", "./src/**/*"
+    "./config/jest/setupTests.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
   ]
 }
