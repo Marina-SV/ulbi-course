@@ -23,6 +23,7 @@ export function buildPlugins({ paths, isDev, analyze }: BuildOptions): webpack.W
         }),
         new webpack.HotModuleReplacementPlugin(),
         new BundleAnalyzerPlugin({
+            openAnalyzer: false,
             analyzerMode: analyze ? 'server' : 'disabled',
         }),
     ];

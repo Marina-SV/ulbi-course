@@ -1,18 +1,18 @@
 import webpack from 'webpack';
 import path from 'path';
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
-import { BuildEnv, BuildPath } from './config/build/types/config';
+import { BuildEnv, BuildPaths } from './config/build/types/config';
 
 // env - переменные окружения, задаются в package.json start
 // для использования env config должен возвращаться из функции, которая принимает env
-export default (env: BuildEnv): webpack.Configuration => {
-    const paths: BuildPath = {
+export default (env: BuildEnv) => {
+    const paths: BuildPaths = {
         // использование path для разных операционных систем
-        // Преобразует последовательность путей или сегментов пути в абсолютный путь.
+        // resolve преобразует последовательность путей или сегментов пути в абсолютный путь.
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
         build: path.resolve(__dirname, 'build'),
         html: path.resolve(__dirname, 'public', 'index.html'),
-        scr: path.resolve(__dirname, 'src'),
+        src: path.resolve(__dirname, 'src'),
     };
 
     const mode = env.mode || 'development';
@@ -22,7 +22,7 @@ export default (env: BuildEnv): webpack.Configuration => {
 
     const analyze = env.analyze || false;
 
-    const config = buildWebpackConfig({
+    const config: webpack.Configuration = buildWebpackConfig({
         mode,
         paths,
         isDev,
