@@ -46,9 +46,12 @@ module.exports = {
         }],
         'max-len': ['error', {
             ignoreComments: true,
-            code: 100
+            code: 110
         }],
-        'arrow-body-style': 'off'
+        'arrow-body-style': 'off',
+        "no-param-reassign": 'warn',
+        // сама отключила
+        'react/jsx-props-no-spreading': 'off'
     },
     globals: {
         __IS_DEV__: true

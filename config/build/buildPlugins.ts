@@ -5,8 +5,8 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 // eslint-disable-next-line max-len
-export function buildPlugins({ paths, isDev, analyze }: BuildOptions): webpack.WebpackPluginInstance[] {
-    return [
+export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
+    const plugins = [
         new HtmlWebpackPlugin({
             template: paths.html,
         }),
@@ -21,10 +21,14 @@ export function buildPlugins({ paths, isDev, analyze }: BuildOptions): webpack.W
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false,
-            analyzerMode: analyze ? 'server' : 'disabled',
-        }),
     ];
+
+    if (isDev) {
+        // обновление модулей приложения без полной перезагрузки
+        plugins.push(new webpack.HotModuleReplacementPlugin());
+        plugins.push(new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+        }));
+    }
+    return plugins;
 }

@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import { BuildOptions } from './types/config';
 import { buildCssLoader } from './loaders/buildCssLoader';
 
-export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     // порядок лоудеров имеет значение и лучше их выносить в переменные
 
     const svgLoader = {

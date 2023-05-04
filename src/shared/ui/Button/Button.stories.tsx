@@ -13,7 +13,6 @@ export default {
     },
 } as ComponentMeta<typeof Button>;
 
-
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Clear = Template.bind({});
@@ -27,7 +26,6 @@ Outline.args = {
     children: 'Text',
     theme: ThemeButton.OUTLINE,
 };
-
 
 export const OutlineDark = Template.bind({});
 OutlineDark.args = {
