@@ -5,7 +5,7 @@ import cls from './AppLink.module.scss';
 
 export enum AppLinkTheme {
     PRIMARY = 'primary',
-    SECONDARY = 'secondary',
+    INVERTED = 'inverted',
     RED = 'red'
 }
 
@@ -16,7 +16,7 @@ interface AppLinkProps extends LinkProps {
 
 export const AppLink: FC<AppLinkProps> = (props) => {
     const {
-        to, children, theme = AppLinkTheme.SECONDARY, className,
+        to, children, theme = AppLinkTheme.INVERTED, className,
     } = props;
     return (
         <Link
