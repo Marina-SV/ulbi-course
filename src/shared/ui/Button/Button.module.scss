@@ -7,6 +7,14 @@
 .clear {
     background: none;
     border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+
+.clearInverted {
+    background: none;
+    border: none;
     margin: 0;
     outline: none;
     padding: 0;
@@ -15,13 +23,11 @@
 
 .outline {
     border: 1px solid var(--primary-color);
-    color: var(--primary-color);
     background: none;
 }
 
 .background {
     background: var(--bg-color);
-    color: var(--primary-color);
     border: none;
 }
 

@@ -23,7 +23,6 @@ export class ErrorBoundary
 
     componentDidCatch(error: Error, errorInfo: ErrorInfo) {
         // Можно также сохранить информацию об ошибке в соответствующую службу журнала ошибок
-        console.log(error, errorInfo);
     }
 
     render() {

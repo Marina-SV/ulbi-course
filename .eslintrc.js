@@ -21,6 +21,7 @@ module.exports = {
         'react',
         '@typescript-eslint',
         'i18next',
+        'react-hooks'
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -31,7 +32,9 @@ module.exports = {
         }],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
-        'no-unused-vars': 'warn',
+        // пофиксить в конце разработки
+        'no-unused-vars': 'off',
+        //
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/jsx-props-no-spreading': 'warn',
@@ -40,6 +43,15 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
+
+        // удалить при настройке семантической верстки
+        "jsx-a11y/no-static-element-interactions": 'off',
+        "jsx-a11y/click-events-have-key-events": 'off',
+        // Реакция на removeEventListener
+        "no-restricted-globals": 'off',
+        //
+        'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+        'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
         'i18next/no-literal-string': ['error', {
             markupOnly: true,
             ignoreAttribute: ['data-testid', 'to']
@@ -57,9 +69,10 @@ module.exports = {
         __IS_DEV__: true
     },
     overrides: [{
-        files: ['**/src/**/*.test.{ts,tsx}'],
+        files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
         rules: {
-            'i18next/no-literal-string': 'off'
+            'i18next/no-literal-string': 'off',
+            'max-len': 'off'
         }
     }]
 };

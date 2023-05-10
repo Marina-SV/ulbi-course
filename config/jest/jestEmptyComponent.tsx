@@ -1,4 +1,4 @@
-const jestEmptyComponent = function () {
+const jestEmptyComponent = () => {
     return <div />;
 };
 

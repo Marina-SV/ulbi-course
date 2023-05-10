@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
+import { Modal } from 'shared/ui/Modal/Modal';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import cls from './Navbar.module.scss';
 
 /* компоненты, которые не требуют асинхронного чанка будем экспортировать
@@ -13,11 +15,30 @@ interface NavbarProps {
 
 export const Navbar = ({ className }: NavbarProps) => {
     const { t } = useTranslation();
+    const [isAuthModal, setIsAuthModal] = useState(false);
+    /*   Для всех функций, которые мы будем передавать как пропс,
+         будем использовать useCallback, т.к. при изменении пропс
+           компонент перерисовывается */
+    const onToggleModal = useCallback(() => {
+        setIsAuthModal((prev) => !prev);
+    }, []);
     return (
         <nav className={classNames(cls.Navbar, {}, [className])}>
-            {/* <div className={classNames(cls.links)}> */}
-            {/*    */}
-            {/* </div> */}
+            <Button
+                theme={ButtonTheme.CLEAR_INVERTED}
+                className={cls.links}
+                onClick={onToggleModal}
+            >
+                {t('Войти')}
+            </Button>
+            <Modal isOpen={isAuthModal} onClose={onToggleModal}>
+
+                {t('Cursus veniam decore imperdiet persius nonumy laudem vero. '
+                    + 'Sed cras nisi primis magnis senectus iussadipscing falli. '
+                    + 'Tortor ullamcorper tellus augue praesentexplicari. '
+                    + 'Duis himenaeos dicantexplicari commodo. '
+                    + 'Vehicula dicat massa vestibulum phasellus interesset prompta')}
+            </Modal>
         </nav>
     );
 };

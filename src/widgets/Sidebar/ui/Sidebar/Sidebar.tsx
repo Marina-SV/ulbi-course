@@ -7,7 +7,7 @@ import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import AboutIcon from 'shared/assets/icons/about.svg';
-import MaintAcon from 'shared/assets/icons/main.svg';
+import MainIcon from 'shared/assets/icons/main.svg';
 import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -45,7 +45,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
                     to={RoutePath.main}
                     className={cls.item}
                 >
-                    <MaintAcon className={cls.icon} />
+                    <MainIcon className={cls.icon} />
                     <span className={classNames(cls.link)}>
                         {t('Главная')}
                     </span>
