@@ -1,24 +1,17 @@
 {
-  "Cursus veniam decore imperdiet persius nonumy laudem vero": {
-    " Sed cras nisi primis magnis senectus iussadipscing falli": {
-      " Tortor ullamcorper tellus augue praesentexplicari": {
-        " Duis himenaeos dicantexplicari commodo": {
-          " Vehicula dicat massa vestibulum phasellus interesset prompta": ""
-        }
-      }
-    }
-  },
   "En": "Ru",
   "English": "Русский",
-  "toggle": "",
-  "Войти": "",
-  "Выбросить ошибку": "",
-  "Главная": "",
+  "Войти": "Log in",
+  "Выбросить ошибку": "Throw error",
+  "Главная": "Main",
   "Главная страница": "Main",
-  "О нас": "",
+  "Модальное красивое окно": "Modal window",
+  "О нас": "About",
   "О сайте": "About",
-  "Обновить страницу": "",
-  "Переключить": "",
-  "Произошла непредвиденная ошибка": "",
-  "Страница не найдена": "Page not found"
+  "Обновить страницу": "Reload page",
+  "Переключить": "Toggle",
+  "Произошла непредвиденная ошибка": "Error",
+  "Страница не найдена": "Page not found",
+  "Увеличить": "Increase",
+  "Уменьшить": "Decrease"
 }

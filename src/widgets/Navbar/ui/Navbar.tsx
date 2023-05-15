@@ -33,11 +33,7 @@ export const Navbar = ({ className }: NavbarProps) => {
             </Button>
             <Modal isOpen={isAuthModal} onClose={onToggleModal}>
 
-                {t('Cursus veniam decore imperdiet persius nonumy laudem vero. '
-                    + 'Sed cras nisi primis magnis senectus iussadipscing falli. '
-                    + 'Tortor ullamcorper tellus augue praesentexplicari. '
-                    + 'Duis himenaeos dicantexplicari commodo. '
-                    + 'Vehicula dicat massa vestibulum phasellus interesset prompta')}
+                {t('Модальное красивое окно')}
             </Modal>
         </nav>
     );
