@@ -37,6 +37,9 @@ export const Modal = (props: ModalProps) => {
         }
     }, [closeHandler]);
 
+    const onContentClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+    };
     /* С пустым массивом зависимостей функции из return отрабатывают 1!раз
     при размонтировании компонента из React-DOM дерева;
     С не пустым массивом зависимостей функции в return отрабатывают каждый раз, когда
@@ -52,10 +55,6 @@ export const Modal = (props: ModalProps) => {
             removeEventListener('keydown', escapeModalWindow);
         };
     }, [isOpen, escapeModalWindow]);
-
-    const onContentClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-    };
 
     return (
         <div className={classNames(

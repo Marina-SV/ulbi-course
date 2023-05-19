@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'shared/ui/Modal/Modal';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { LoginModal } from 'features/AuthByUsername';
 import cls from './Navbar.module.scss';
 
 /* компоненты, которые не требуют асинхронного чанка будем экспортировать
@@ -19,22 +19,27 @@ export const Navbar = ({ className }: NavbarProps) => {
     /*   Для всех функций, которые мы будем передавать как пропс,
          будем использовать useCallback, т.к. при изменении пропс
            компонент перерисовывается */
-    const onToggleModal = useCallback(() => {
-        setIsAuthModal((prev) => !prev);
+    const onCloseModal = useCallback(() => {
+        setIsAuthModal(false);
     }, []);
+
+    const onShowModal = useCallback(() => {
+        setIsAuthModal(true);
+    }, []);
+
     return (
         <nav className={classNames(cls.Navbar, {}, [className])}>
             <Button
                 theme={ButtonTheme.CLEAR_INVERTED}
                 className={cls.links}
-                onClick={onToggleModal}
+                onClick={onShowModal}
             >
                 {t('Войти')}
             </Button>
-            <Modal isOpen={isAuthModal} onClose={onToggleModal}>
-
-                {t('Модальное красивое окно')}
-            </Modal>
+            <LoginModal
+                isOpen={isAuthModal}
+                onClose={onCloseModal}
+            />
         </nav>
     );
 };
