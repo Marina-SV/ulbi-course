@@ -9,17 +9,25 @@ interface ModalProps {
     children?: ReactNode;
     isOpen?: boolean;
     onClose?: () => void;
+    lazy?: boolean
 }
 
 export const Modal = (props: ModalProps) => {
     const {
-        className, children, onClose, isOpen,
+        className, children, onClose, isOpen, lazy,
     } = props;
 
     const [isClosing, setIsClosing] = useState(false);
-    // useRef нужен, чтобы хранить данные между перерендорами.
-    // Чтобы id SetTimeout не менялся, и ссылка на очистку таймера работала
+    const [isMounted, setIsMounted] = useState(false);
+    /* useRef нужен, чтобы хранить данные между перерендорами.
+    Чтобы id SetTimeout не менялся, и ссылка на очистку таймера работала */
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
+
+    useEffect(() => {
+        if (isOpen) {
+            setIsMounted(true);
+        }
+    }, [isOpen]);
 
     const closeHandler = useCallback(() => {
         if (onClose) {
@@ -55,6 +63,11 @@ export const Modal = (props: ModalProps) => {
             removeEventListener('keydown', escapeModalWindow);
         };
     }, [isOpen, escapeModalWindow]);
+
+    // не монтирует компонент в реакт дом дерево и возвращает null
+    if (lazy && !isMounted) {
+        return null;
+    }
 
     return (
         <div className={classNames(
