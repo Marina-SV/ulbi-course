@@ -13,7 +13,7 @@ export interface StateSchema {
     loginForm?: LoginSchema;
 }
 
-export type StateSchemaKey = keyof StateSchema;
+export type StateSchemaKey = keyof StateSchema; // = 'counter'| 'user' | 'loginForm'
 
 export interface ReducerManager {
     getReducerMap: () => ReducersMapObject<StateSchema>;
