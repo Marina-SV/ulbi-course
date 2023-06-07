@@ -1,7 +1,8 @@
 import { lazy } from 'react';
 
 export const AboutPageAsync = lazy(() => new Promise((resolve) => {
+    /* Искусственная задержка загрузки страниц только для курса.
+    При deploy удалить */
     // @ts-ignore
-    // Искусственная задержка загрузки только для курса. При deploy удалить
     setTimeout(() => resolve(import('./AboutPage')), 1500);
 }));

@@ -32,6 +32,7 @@ module.exports = {
         }],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
+        'react/prop-types': 'off',
         // пофиксить в конце разработки
         'no-unused-vars': 'off',
         //

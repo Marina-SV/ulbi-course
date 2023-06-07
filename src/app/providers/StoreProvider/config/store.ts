@@ -28,3 +28,6 @@ export function createReduxStore(
 
     return store;
 }
+
+// типизация dispatch: получить значение ключа dispatch у объекта store
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']
