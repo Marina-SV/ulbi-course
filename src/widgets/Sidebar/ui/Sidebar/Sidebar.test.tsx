@@ -3,15 +3,15 @@ import { Sidebar } from 'widgets/Sidebar/ui/Sidebar/Sidebar';
 import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
 
 describe('Sidebar', () => {
-    test('Component render', () => {
+    test('with only first param', () => {
         componentRender(<Sidebar />);
         expect(screen.getByTestId('sidebar')).toBeInTheDocument();
     });
 
-    test('Component has class toggle after pressing button', () => {
+    test('test toggle', () => {
         componentRender(<Sidebar />);
-        expect(screen.getByTestId('sidebar')).toBeInTheDocument();
         const toggleBtn = screen.getByTestId('sidebar-toggle');
+        expect(screen.getByTestId('sidebar')).toBeInTheDocument();
         fireEvent.click(toggleBtn);
         expect(screen.getByTestId('sidebar')).toHaveClass('collapsed');
     });

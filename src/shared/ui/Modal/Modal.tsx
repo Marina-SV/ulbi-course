@@ -1,7 +1,8 @@
 import React, {
+    MutableRefObject,
     ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -21,7 +22,7 @@ export const Modal = (props: ModalProps) => {
     const [isMounted, setIsMounted] = useState(false);
     /* useRef нужен, чтобы хранить данные между перерендорами.
     Чтобы id SetTimeout не менялся, и ссылка на очистку таймера работала */
-    const timerRef = useRef<ReturnType<typeof setTimeout>>();
+    const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
 
     useEffect(() => {
         if (isOpen) {
@@ -69,16 +70,13 @@ export const Modal = (props: ModalProps) => {
         return null;
     }
 
+    const mods: Mods = {
+        [cls.opened]: isOpen,
+        [cls.isClosing]: isClosing,
+    };
+
     return (
-        <div className={classNames(
-            cls.Modal,
-            {
-                [cls.opened]: isOpen,
-                [cls.isClosing]: isClosing,
-            },
-            [className],
-        )}
-        >
+        <div className={classNames(cls.Modal, mods, [className])}>
             <div className={cls.overlay} onClick={closeHandler}>
                 <div
                     className={cls.content}

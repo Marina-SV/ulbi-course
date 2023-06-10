@@ -38,7 +38,6 @@ module.exports = {
         //
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
-        'react/jsx-props-no-spreading': 'warn',
         'react/function-component-definition': 'off',
         'no-shadow': 'off',
         'import/extensions': 'off',
@@ -51,6 +50,7 @@ module.exports = {
         // Реакция на removeEventListener
         "no-restricted-globals": 'off',
         //
+        'no-undef': 'off',
         'no-param-reassign': 'off',
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
@@ -63,12 +63,12 @@ module.exports = {
             code: 110
         }],
         'arrow-body-style': 'off',
-        "no-param-reassign": 'warn',
         // сама отключила
         'react/jsx-props-no-spreading': 'off'
     },
     globals: {
-        __IS_DEV__: true
+        __IS_DEV__: true,
+        __API__: true,
     },
     overrides: [{
         files: ['**/src/**/*.{test,stories}.{ts,tsx}'],

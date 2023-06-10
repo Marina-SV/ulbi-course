@@ -8,34 +8,30 @@ export default ({ config }: {config: webpack.Configuration}) => {
         build: '',
         html: '',
         entry: '',
-        // выйти на два уровня назад, чтобы найти src
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
+    config!.resolve!.modules!.push(paths.src);
+    config!.resolve!.extensions!.push('.ts', '.tsx');
 
-    /* используем функции основного webpack config для сборки сторибучного конфига */
-    // для работы с абсолютными импортами
-    config.resolve.modules.push(paths.src);
-    config.resolve.extensions.push('.ts', '.tsx');
-
-    /* По дефолту в сторибучной сборке стоит другой лоадер для SVG,
-    мы используем svgr, поэтому необходимо его изъять */
-    config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-        if (rule.test instanceof RegExp && rule.test.toString().includes('svg')) {
+    // eslint-disable-next-line no-param-reassign
+    // @ts-ignore
+    config!.module!.rules = config.module!.rules!.map((rule: RuleSetRule) => {
+        if (/svg/.test(rule.test as string)) {
             return { ...rule, exclude: /\.svg$/i };
         }
+
         return rule;
     });
 
-    // затем добавляем свой loader с svgr
-    config.module.rules.push({
+    config!.module!.rules.push({
         test: /\.svg$/,
         use: ['@svgr/webpack'],
     });
+    config!.module!.rules.push(buildCssLoader(true));
 
-    config.module.rules.push(buildCssLoader(true));
-
-    config.plugins.push(new DefinePlugin({
-        __IS_DEV__: true,
+    config!.plugins!.push(new DefinePlugin({
+        __IS_DEV__: JSON.stringify(true),
+        __API__: JSON.stringify(''),
     }));
 
     return config;

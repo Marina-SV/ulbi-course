@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import {
     ButtonHTMLAttributes, FC, memo, ReactNode,
 } from 'react';
@@ -31,12 +31,17 @@ export const Button: FC<ButtonProps> = memo((props) => {
     const {
         className,
         children,
-        theme,
+        theme = ButtonTheme.OUTLINE,
         square,
         disabled,
         size = ButtonSize.M,
         ...otherProps
     } = props;
+
+    const mods: Mods = {
+        [cls.square]: square,
+        [cls.disabled]: disabled,
+    };
 
     return (
         <button
@@ -44,10 +49,7 @@ export const Button: FC<ButtonProps> = memo((props) => {
             disabled={disabled}
             className={classNames(
                 cls.Button,
-                {
-                    [cls.square]: square,
-                    [cls.disabled]: disabled,
-                },
+                mods,
                 [className, cls[theme], cls[size]],
             )}
             {...otherProps}
