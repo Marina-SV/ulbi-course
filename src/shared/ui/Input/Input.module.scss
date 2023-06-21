@@ -4,16 +4,17 @@
 
 .placeholder {
     margin-right: 5px;
+    color: var(--primary-color);
 }
 
 .input {
     background: transparent;
-    border: 1px solid var(--primary-color);
+    border: none;
     border-radius: 2px;
     width: 100%;
     color: var(--primary-color);
 
     &:focus {
-        outline: var(--primary-color) solid 0.5px;
+        outline: none;
     }
 }

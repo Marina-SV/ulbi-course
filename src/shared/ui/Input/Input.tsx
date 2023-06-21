@@ -1,18 +1,19 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import React, {
-    InputHTMLAttributes, memo, useEffect, useRef, useState,
+    InputHTMLAttributes, memo, useEffect, useRef,
 } from 'react';
 import cls from './Input.module.scss';
 
 // Omit - достать все из первого аргумента и исключить оттуда второй аргумент
 // Потому что используем свои пропсы value и onChange, а не дефолтные
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 
 interface InputProps extends HTMLInputProps {
     className?: string;
-    value?: string;
+    value?: string | number;
     onChange?: (value: string) => void;
     autofocus?: boolean;
+    readonly?: boolean;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -23,6 +24,7 @@ export const Input = memo((props: InputProps) => {
         type = 'text',
         placeholder,
         autofocus,
+        readonly,
         ...otherProps
     } = props;
 
@@ -41,17 +43,25 @@ export const Input = memo((props: InputProps) => {
     };
 
     return (
-        <div className={classNames(cls.InputWrapper, {}, [className])}>
+        <div className={classNames(
+            cls.InputWrapper,
+            {},
+            [className],
+        )}
+        >
+
             {placeholder && (
                 <div className={cls.placeholder}>
                     {`${placeholder}`}
                 </div>
             )}
-            <div className={cls.caretWrapper}>
+
+            <div>
                 <input
                     ref={ref}
                     type={type}
                     value={value}
+                    readOnly={readonly}
                     onChange={onChangeHandler}
                     className={cls.input}
                     {...otherProps}

@@ -64,11 +64,13 @@ module.exports = {
         }],
         'arrow-body-style': 'off',
         // сама отключила
-        'react/jsx-props-no-spreading': 'off'
+        'react/jsx-props-no-spreading': 'off',
+        'prefer-promise-reject-errors': 'off',
     },
     globals: {
         __IS_DEV__: true,
         __API__: true,
+        __PROJECT__: true,
     },
     overrides: [{
         files: ['**/src/**/*.{test,stories}.{ts,tsx}'],

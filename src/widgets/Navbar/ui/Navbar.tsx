@@ -3,8 +3,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import cls from './Navbar.module.scss';
 
 /* компоненты, которые не требуют асинхронного чанка будем экспортировать
@@ -19,7 +20,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isAuthModal, setIsAuthModal] = useState(false);
     const authData = useSelector((getUserAuthData));
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     /*   Для всех функций, которые мы будем передавать как пропс,
          будем использовать useCallback, т.к. при изменении пропс
