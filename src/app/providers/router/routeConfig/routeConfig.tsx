@@ -1,7 +1,7 @@
 import { RouteProps } from 'react-router-dom';
 import React from 'react';
-import { AboutPage } from 'pages/AboutPage/index';
-import { MainPage } from 'pages/MainPage/index';
+import { AboutPage } from 'pages/AboutPage';
+import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage/ui/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
 
@@ -9,8 +9,7 @@ export type AppRoutesProps = RouteProps & {
     authOnly?: boolean;
 }
 
-export enum
-AppRoutes {
+export enum AppRoutes {
     MAIN = 'main',
     ABOUT = 'about',
     PROFILE = 'profile',
