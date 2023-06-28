@@ -7,6 +7,7 @@ import {
 import { ProfileSchema } from 'entities/Profile';
 import { NavigateOptions, To } from 'react-router-dom';
 import { AxiosInstance } from 'axios';
+import { ArticleDetailsSchema } from 'entities/Article';
 
 export interface StateSchema {
     counter: CounterSchema;
@@ -15,6 +16,7 @@ export interface StateSchema {
     // Асинхронные редюсеры
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
+    articleDetails?: ArticleDetailsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema; // = 'counter'| 'user' | 'loginForm'
@@ -32,11 +34,12 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 
 export interface ThunkExtraArg {
     api: AxiosInstance;
-    navigate?: (to: To, options?: NavigateOptions) => void,
+    navigate?: (to: To, options?: NavigateOptions) => void;
 }
 
 export interface ThunkConfig<T> {
     rejectValue: T;
+    // extra описывает extraArgument, который передается в ThunkAPI
     extra: ThunkExtraArg;
     state: StateSchema;
 }

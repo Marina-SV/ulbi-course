@@ -5,8 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "concurrently \"npm start\" \"npm run start:dev:server\"",
-    "start": "webpack serve --env port=3000",
-    "start:dev:server": "node ./json-server/index.js",
     "build:prod": "webpack  --env mode=production",
     "build:dev": "webpack  --env mode=development",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
@@ -21,7 +19,9 @@
     "test:ui:ok": "npx loki approve",
     "storybook:build": "build-storybook -c ./config/storybook",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
-    "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html"
+    "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
+    "start": "webpack serve --env port=3000",
+    "start:dev:server": "node ./json-server/index.js"
   },
   "keywords": [],
   "author": "",

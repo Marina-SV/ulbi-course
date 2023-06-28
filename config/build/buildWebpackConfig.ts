@@ -21,6 +21,8 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             path: paths.build,
             // clean удаляет старые файлы сборки
             clean: true,
+            // каждый файл, отправленный в ваш output.path будет ссылаться на output.publicPath
+            publicPath: '/',
         },
         plugins: buildPlugins(options),
         module: {
