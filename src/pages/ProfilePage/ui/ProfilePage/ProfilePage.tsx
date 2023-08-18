@@ -19,6 +19,8 @@ import { Country } from 'entities/Country/model/types/country';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { ValidateProfileError } from 'entities/Profile/model/types/profile';
 import { useTranslation } from 'react-i18next';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { useParams } from 'react-router-dom';
 import { ProfilePageHeader } from '../ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -32,12 +34,13 @@ interface ProfilePageProps {
 const ProfilePage = ({ className }: ProfilePageProps) => {
     const dispatch = useAppDispatch();
     const { t } = useTranslation();
+    const { id } = useParams<{id: string}>();
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+    });
 
     const formData = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading);

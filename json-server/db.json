@@ -19,7 +19,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -100,6 +102,18 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "gfgfgf",
+      "id": "ylHqgTI"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "from user",
+      "id": "3-sKShf"
     }
   ],
   "users": [
@@ -117,14 +131,29 @@
       "role": "USER",
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     }
-  ],  "profile": {
-    "first": "Марина",
-    "lastname": "Иванова",
-    "age": 28,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Москва",
-    "username": "admin",
-    "avatar": "https://oir.mobi/uploads/posts/2021-04/1618600893_42-oir_mobi-p-polevie-tsveti-sinego-tsveta-tsveti-krasiv-48.jpg"
-  }
+  ],
+  "profile": [
+    {
+      "id": "1",
+      "first": "Марина",
+      "lastname": "Иванова",
+      "age": 28,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Москва",
+      "username": "admin",
+      "avatar": "https://oir.mobi/uploads/posts/2021-04/1618600893_42-oir_mobi-p-polevie-tsveti-sinego-tsveta-tsveti-krasiv-48.jpg"
+    },
+    {
+      "id": "2",
+      "first": "Вася",
+      "lastname": "Сидоров",
+      "age": 35,
+      "currency": "RUB",
+      "country": "Belarus",
+      "city": "Минск",
+      "username": "guest",
+      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+    }
+  ]
 }

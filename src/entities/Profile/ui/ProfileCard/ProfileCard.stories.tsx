@@ -27,6 +27,7 @@ Primary.args = {
         currency: Currency.USD,
         avatar,
     },
+    readonly: true,
 };
 
 export const withError = Template.bind({});
